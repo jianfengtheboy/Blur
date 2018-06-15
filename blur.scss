@@ -1,0 +1,68 @@
+@mixin filter($px) {
+    -webkit-filter : blur($px);
+    -moz-filter : blur($px);
+    -ms-filter : blur($px);
+    -o-filter : blur($px);
+    filter : blur($px);
+}
+@mixin borderRadius($radius : 5px) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+* {
+    margin:0;
+    padding:0;
+}
+#blur-div {
+    margin:0 auto;
+    position: relative;
+    overflow: hidden;
+    #blur-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        margin:0 auto;
+        @include filter(30px);
+        z-index: 0;
+    }
+    #canvas {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin:0 auto;
+        z-index: 5;
+    }
+    .button {
+        display: block;
+        position: absolute;
+        bottom: 20px;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff;
+        text-decoration: none;
+        @include borderRadius();
+        z-index: 9;
+    }
+    #reset-button {
+        left: 50px;
+        background-color: #058;
+        &:hover {
+            background-color: #047;
+        }
+    }
+    #show-button {
+        right: 50px;
+        background-color: #085;
+        &:hover {
+            background-color: #074;
+        }
+    }
+}
